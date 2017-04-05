@@ -27,11 +27,6 @@
 </script>
 
 <style scoped>
-  /*首页*/
-  .home {
-    padding-top: 130px;
-  }
-
   .carousel_home li {
     display: inline-block;
     width: 10px;
@@ -39,6 +34,7 @@
     background-color: #ff1b1b;
     border: 1px solid #ff1b1b;
     border-radius: 100%;
+    margin: 0 5px;
   }
 
   .carousel_home .active {

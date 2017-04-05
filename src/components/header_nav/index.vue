@@ -5,7 +5,7 @@
       <div class="row nav_content">
         <div class="col-md-3 text-center nav_col_brand">
           <div class="nav_brand">
-            <!--<img src="./img/logo.png" alt="Brand">-->
+            <img src="../../assets/img/logo.png" alt="Brand">
           </div>
         </div>
 

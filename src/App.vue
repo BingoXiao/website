@@ -32,10 +32,16 @@
       </section>
 
       <!--联系我们-->
-      <section id="contact" class="contact">
+      <footer id="contact" class="contact">
         <contact-component></contact-component>
-      </section>
+      </footer>
     </article>
+
+    <!--图片展示轮播-->
+    <div class="modal temp_modal" id="tempModal"
+         data-show="false" aria-labelledby="myModalLabel">
+      <temp-show></temp-show>
+    </div>
   </div>
 </template>
 
@@ -47,16 +53,26 @@
   import serviceComponent from './components/service/index.vue';
   import productionComponent from './components/production/index.vue';
   import contactComponent from './components/contact/index.vue';
+  import tempShow from './components/carousel/temp_show/index';
 
   export default {
     name: 'app',
+    mounted() {
+      /* 模态框图片 */
+      $('#tempModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+      $('#temp-carousel').carousel();
+    },
     components: {
       topCarousel,
       headerComponent,
       aboutComponent,
       serviceComponent,
       productionComponent,
-      contactComponent
+      contactComponent,
+      tempShow
     }
   };
 </script>
@@ -65,6 +81,9 @@
   .content {
     color: #000;
     background-color: #fff;
+  }
+  .home {
+    padding-top: 130px;
   }
   .arrow {
     background-color: #cccccc;
@@ -85,7 +104,16 @@
   .partners img{
     width: 100%;
   }
-
+  .temp_modal{
+    /*background-color: rgba(0, 0, 0, 0.03);*/
+  }
+  /*模糊效果*/
+  .blur_bg {
+    -webkit-filter: blur(8px); /* Chrome, Opera */
+    -moz-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+  }
 </style>
 
 

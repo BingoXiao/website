@@ -1,0 +1,178 @@
+<template>
+  <div>
+    <table class="brand_table">
+      <tbody>
+      <tr v-for="obj in items">
+        <td v-for="item in obj.arr">
+          <div v-if="item.src">
+            <div class="image" @mouseenter="showInfo">
+              <img :src="item.src">
+            </div>
+            <div class="preview" style="display:none;"
+                 @mouseleave="hideInfo" @click="preview(item.temps, item.intro)">
+              <div class="cover">
+                <div class="cover_content">
+                  <p>{{item.title}}</p>
+                  <img src="../../../assets/img/5.png" alt="arrow">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else class="imageSample">
+            <img src="../../../assets/img/10.jpg">
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+
+<script>
+  import $ from 'jquery';
+  import {modalShow} from '../../../assets/js/modal';
+
+  export default{
+    data() {
+      return {
+        items: [
+          {  // 第一行
+            arr: [
+              {
+                title: '企业LOGO',
+                src: require('../../../assets/img/brand/1.jpg'),
+                intro: [
+                  '深圳市金镖科技有限公司LOGO',
+                  '深圳风标LOGO',
+                  '深圳市南山广宇保安培训学校LOGO',
+                  '深圳市近脉网络科技有限公司LOGO',
+                  'T&G篮球LOGO'
+                ],
+                temps: [
+                  require('../../../assets/img/brand/1/1.jpg'),
+                  require('../../../assets/img/brand/1/2.jpg'),
+                  require('../../../assets/img/brand/1/3.jpg'),
+                  require('../../../assets/img/brand/1/4.jpg'),
+                  require('../../../assets/img/brand/1/5.jpg')
+                ]
+              },
+              {
+                title: '品牌形象推广',
+                src: require('../../../assets/img/brand/2.jpg'),
+                intro: [
+                  '心井ShinDon——logo设计',
+                  '心井ShinDon——布包设计',
+                  '心井ShinDon——菜单设计'
+                ],
+                temps: [
+                  require('../../../assets/img/brand/2/1.jpg'),
+                  require('../../../assets/img/brand/2/2.jpg'),
+                  require('../../../assets/img/brand/2/3.jpg')
+                ]
+              },
+              {
+                src: ''
+              }
+            ]
+          },
+          {  // 第二行
+            arr: [
+              {
+                src: ''
+              },
+              {
+                src: ''
+              },
+              {
+                src: ''
+              }
+            ]
+          },
+          {   // 第三行
+            arr: [
+              {
+                src: ''
+              },
+              {
+                src: ''
+              },
+              {
+                src: ''
+              }
+            ]
+          }
+        ]
+      };
+    },
+    methods: {
+      /* 鼠标移入图片 */
+      showInfo: function(event) {
+        $(event.target).closest('td').find('.preview').css('display', '');
+      },
+      /* 移出图片 */
+      hideInfo: function(event) {
+        $(event.target).css('display', 'none');
+      },
+      /* 点击查看 */
+      preview: function(temps, intro) {
+        var self = this;
+        self.$store.commit('TEMP_ARR', temps);
+        self.$store.commit('TEMP_INTRO', intro);
+        $('#temp-carousel').carousel('cycle');
+        modalShow('#tempModal', 'zoomIn', function() {
+          $('article').addClass('blur_bg');
+          $('header').css('display', 'none');
+        });
+      }
+    }
+  };
+</script>
+
+<style>
+  .brand_table {
+    border-collapse: separate;
+    border-spacing: 15px;
+  }
+  .brand_table > tbody > tr > td {
+    position: relative;
+  }
+  .brand_table .image>img, .brand_table .imageSample>img{
+    width: 320px;
+    height: 240px;
+  }
+  .brand_table .image>img{
+    cursor: pointer;
+  }
+  .preview {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    letter-spacing: 2px;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+  }
+  .cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #ff1d1d;
+    opacity: 0.5;
+    filter: Alpha(opacity=50);
+    display: table;
+  }
+  .cover_content {
+    margin: auto;
+    display: table-cell;
+    vertical-align: middle
+  }
+  .cover_content > p {
+    margin-top: 40px;
+  }
+  .cover_content > img {
+    width: 36px;
+  }
+</style>
