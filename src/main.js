@@ -5,11 +5,12 @@ import App from './App';
 import store from './vuex/store';
 // import router from './router';
 
-import './assets/css/bootstrap.css';
-import './assets/css/animate.css';
-import './assets/js/bootstrap';
+import '../theme/index.css';
+import ElementUI from 'element-ui';
 
 Vue.config.productionTip = false;
+
+Vue.use(ElementUI);
 
 /* eslint-disable no-new */
 new Vue({

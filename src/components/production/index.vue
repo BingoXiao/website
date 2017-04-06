@@ -1,54 +1,28 @@
 <template>
-  <div>
-    <div class="col-md-2 col-md-offset-1">
-      <div class="text-center">
-        <div>
-          <span class="production_title">出品</span>
-        </div>
-        <ul id="production_nav" class="nav nav-pills nav-stacked production_nav">
-          <li role="presentation" class="active">
-            <a href="#brand" aria-controls="home"
-               @click="showTag('brandComponent')">
-              <span class="circle"></span>
-              品牌策划
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#festivities"
-               @click="showTag('festivitiesComponent')">
-              <span class="circle"></span>
-              活动庆典
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#theme"
-               @click="showTag('themeComponent')">
-              <span class="circle"></span>
-              主题美陈
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#exhibition"
-               @click="showTag('exhibitionComponent')">
-              <span class="circle"></span>
-              展览展示
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-8 tab-content">
+  <el-row type="flex" justify="center">
+    <el-col :span="4" class="production_nav">
+      <h3 class="production_title">出品</h3>
+      <ul>
+        <li role="presentation" v-for="(item, index) in list" @click="select_list(index)">
+          <a href="javascript:;" :class="activeIndex===index?'active':''">
+            <span class="circle"></span> {{item.title}}</a>
+        </li>
+      </ul>
+    </el-col>
+
+    <el-col :span="16">
       <!--品牌策划-->
       <!--活动策划-->
       <!--主题美陈-->
       <!--展览展示-->
-      <component :is="currentView"></component>
-    </div>
-  </div>
+      <el-row class="tab-content">
+        <component :is="list[activeIndex]['component']"></component>
+      </el-row>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-  import $ from 'jquery';
   import brandComponent from './brand/index';
   import festivitiesComponent from './festivities/index';
   import themeComponent from './theme/index';
@@ -57,14 +31,31 @@
   export default{
     data() {
       return {
-        currentView: 'brandComponent'
+        list: [
+          {
+            title: '品牌策划',
+            component: 'brandComponent'
+          },
+          {
+            title: '活动庆典',
+            component: festivitiesComponent
+          },
+          {
+            title: '主题美陈',
+            component: themeComponent
+          },
+          {
+            title: '展览展示',
+            component: exhibitionComponent
+          }
+        ],
+        activeIndex: 0
       };
     },
     methods: {
-      showTag: function(name) {
+      select_list: function(index) {
         var self = this;
-//        $(event.target).addClass('active').siblings().removeClass('active');
-        self.currentView = name;
+        self.activeIndex = index;
       }
     },
     components: {
@@ -80,47 +71,43 @@
   /*出品*/
   .production_nav {
     color: #000;
-    font-size: 18px;
-    font-family: "SimHei";
+    font-size: 17px;
+    font-family: SimHei;
+    text-align: center;
   }
-
-  .production_nav > li > a {
+  ul {
+    margin-top: 10px;
+    list-style: none;
+    padding-left: 0;
+  }
+  ul>li{
+    padding: 8px;
+  }
+  ul>li>a, ul>li>a:hover, ul>li>a:active, ul>li>a:focus{
     color: #929292;
-    background-color: #fff;
+    text-decoration: none;
   }
-
-  .production_nav .circle {
+  ul>li>a:hover, ul>li>a:active, ul>li>a:focus{
+    color: #000000;
+    font-size: 19px;
+  }
+  .active{
+    color: #000000;
+    font-size: 19px;
+  }
+  .circle{
     width: 12px;
     height: 12px;
     border-radius: 100%;
     background-color: #929292;
     display: inline-block;
   }
-
-  .production_nav > li > a:focus,
-  .production_nav > li > a:hover {
-    color: #000000;
-    background-color: #fff;
+  ul>li>a:hover>.circle, ul>li>a:active>.circle, ul>li>a:focus>.circle{
+    background-color: #000000;
   }
-
-  .production_nav > li > a:focus > .circle,
-  .production_nav > li > a:hover > .circle {
-    background-color: #000;
+  .active>.circle{
+    background-color: #000000;
   }
-
-  .production_nav > li.active > a,
-  .production_nav > li.active > a:focus,
-  .production_nav > li.active > a:hover {
-    color: #000;
-    background-color: #fff;
-  }
-
-  .production_nav > li.active > a > .circle,
-  .production_nav > li.active > a:focus.circle,
-  .production_nav > li.active > a:hover.circle {
-    background-color: #000;
-  }
-
   .production_title {
     display: inline-block;
     font-size: 30px;

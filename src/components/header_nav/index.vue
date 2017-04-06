@@ -1,109 +1,81 @@
 <template>
-  <!--顶部导航-->
-  <header>
-    <nav class="navbar navbar-default navbar-fixed-top header" id="navbar-example">
-      <div class="row nav_content">
-        <div class="col-md-3 text-center nav_col_brand">
-          <div class="nav_brand">
-            <img src="../../assets/img/logo.png" alt="Brand">
+  <el-row type="flex" justify="center"
+          class="el-menu-demo">
+    <el-col :span="24" class="hei">
+      <el-row type="flex" justify="center" class="hei">
+        <el-col :span="2" class="hei" style="display: table;">
+          <div style="display:table-cell;vertical-align: middle">
+            <img src="../../assets/img/logo.png" style="vertical-align: middle">
           </div>
-        </div>
+        </el-col>
 
-        <div class="col-md-9 nav_col">
-          <ul id="navbar" class="nav navbar-nav">
-            <li class="navItem active">
-              <a href="#home"><span>首页/HOME</span></a>
-            </li>
-            <li class="navItem">
-              <a href="#about"><span>关于/ABOUT</span></a>
-            </li>
-            <li class="navItem">
-              <a href="#service"><span>服务/SERVICE</span></a>
-            </li>
-            <li class="navItem">
-              <a href="#production"><span>出品/PRODUCTION</span></a>
-            </li>
-            <li class="navItem">
-              <a href="#partners"><span>合作伙伴/PARTNERS</span></a>
-            </li>
-            <li class="navItem">
-              <a href="#contact"><span>联系我们/CONTACT</span></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+        <el-col :span="16" :offset="2" style="height: 100%">
+          <el-menu id="menu"
+                   class="hei"
+                   :default-active="activeIndex"
+                   mode="horizontal">
+            <el-menu-item index="1" data-section="home">
+              <a class="aa" href="#home">首页/HOME</a>
+            </el-menu-item>
+
+            <el-menu-item index="2">
+              <a href="#about">关于/ABOUT</a>
+            </el-menu-item>
+
+            <el-menu-item index="3">
+              <a href="#service">服务/SERVICE</a>
+            </el-menu-item>
+
+            <el-menu-item index="4">
+              <a href="#production">出品/PRODUCTION</a>
+            </el-menu-item>
+
+            <el-menu-item index="5">
+              <a href="#partners">合作伙伴/PARTNERS</a>
+            </el-menu-item>
+
+            <el-menu-item index="6">
+              <a href="#contact">联系我们/CONTACT</a>
+            </el-menu-item>
+          </el-menu>
+        </el-col>
+      </el-row>
+    </el-col>
+  </el-row>
 </template>
 
+
 <script>
-  export default{};
+  export default{
+    data() {
+      return {
+        activeIndex: '1'
+      };
+    }
+  };
 </script>
 
 <style scoped>
-  /*导航头*/
-  .header {
+  .el-menu-demo {
     width: 100%;
-    height: 130px;
-    text-align: center;
-    font-family: "SimHei";
-    font-size: 17px;
+    position: fixed;
+    z-index: 999;
+    height: 100px;
     background-color: #fff;
-    border-bottom: 2px solid #bfbcbd;
+    border-bottom: 2px solid #cccccc;
   }
-
-  .header .navbar-default {
-    width: 100%;
-    height: inherit;
-    min-height: 100%;
-    background-color: #ffffff;
-    border: none;
-    margin: auto;
-  }
-
-  .nav_content, .nav_col_brand, .nav_col {
-    height: inherit;
-  }
-
-  /*logo*/
-  .nav_col_brand {
-    display: table;
-  }
-
-  .nav_col_brand .nav_brand {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .nav_brand img {
-    /*width: 130px;*/
-    vertical-align: middle;
-  }
-
-  /*导航选项*/
-  .nav_col ul, .nav_col ul > li {
-    height: inherit;
-    position: relative;
-  }
-
-  .nav_col ul, .nav_col ul > li > a {
-    height: inherit;
-    display: table;
-    color: #afadae;
-  }
-
-  .nav_col ul > li > a > span {
-    display: table-cell;
-    vertical-align: bottom;
-  }
-
-  .nav_col .navbar-nav > li > a:focus,
-  .nav_col .navbar-nav > li > a:hover,
-  .nav_col .navbar-nav > .active > a,
-  .nav_col .navbar-nav > .active > a:focus,
-  .nav_col .navbar-nav > .active > a:hover {
+  .el-menu-item.is-active a {
     color: #fff;
-    background-color: #ff1b1b;
   }
-
+  .hei{
+    height: 100%;
+  }
+  .el-menu--horizontal .el-menu-item a,
+  .el-menu--horizontal .el-menu-item a:hover{
+    font-size: 18px;
+    padding: 65px 20px 15px 20px;
+  }
+  .el-menu--horizontal .el-menu-item a:hover{
+    color: #fff;
+  }
 </style>

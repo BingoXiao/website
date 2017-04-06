@@ -2,27 +2,21 @@
   <div>
     <table class="brand_table">
       <tbody>
-      <tr v-for="obj in items">
-        <td v-for="item in obj.arr">
-          <div v-if="item.src">
-            <div class="image" @mouseenter="showInfo">
-              <img :src="item.src">
+        <tr v-for="obj in items">
+          <td v-for="item in obj.arr">
+            <div v-if="item.src">
+              <temp-component
+                :imgSrc="item.src"
+                :temps="item.temps"
+                :intro="item.intro"
+                :title="item.title">
+              </temp-component>
             </div>
-            <div class="preview" style="display:none;"
-                 @mouseleave="hideInfo" @click="preview(item.temps, item.intro)">
-              <div class="cover">
-                <div class="cover_content">
-                  <p>{{item.title}}</p>
-                  <img src="../../../assets/img/5.png" alt="arrow">
-                </div>
-              </div>
+            <div v-else class="imageSample">
+              <img src="../../../assets/img/10.jpg">
             </div>
-          </div>
-          <div v-else class="imageSample">
-            <img src="../../../assets/img/10.jpg">
-          </div>
-        </td>
-      </tr>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -30,9 +24,7 @@
 
 
 <script>
-  import $ from 'jquery';
-  import {modalShow} from '../../../assets/js/modal';
-
+  import tempComponent from '../../tempShow/index';
   export default{
     data() {
       return {
@@ -105,26 +97,8 @@
         ]
       };
     },
-    methods: {
-      /* 鼠标移入图片 */
-      showInfo: function(event) {
-        $(event.target).closest('td').find('.preview').css('display', '');
-      },
-      /* 移出图片 */
-      hideInfo: function(event) {
-        $(event.target).css('display', 'none');
-      },
-      /* 点击查看 */
-      preview: function(temps, intro) {
-        var self = this;
-        self.$store.commit('TEMP_ARR', temps);
-        self.$store.commit('TEMP_INTRO', intro);
-        $('#temp-carousel').carousel('cycle');
-        modalShow('#tempModal', 'zoomIn', function() {
-          $('article').addClass('blur_bg');
-          $('header').css('display', 'none');
-        });
-      }
+    components: {
+      tempComponent
     }
   };
 </script>
@@ -141,38 +115,5 @@
     width: 320px;
     height: 240px;
   }
-  .brand_table .image>img{
-    cursor: pointer;
-  }
-  .preview {
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    letter-spacing: 2px;
-    font-size: 18px;
-    position: absolute;
-    top: 0;
-  }
-  .cover {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    background-color: #ff1d1d;
-    opacity: 0.5;
-    filter: Alpha(opacity=50);
-    display: table;
-  }
-  .cover_content {
-    margin: auto;
-    display: table-cell;
-    vertical-align: middle
-  }
-  .cover_content > p {
-    margin-top: 40px;
-  }
-  .cover_content > img {
-    width: 36px;
-  }
+
 </style>

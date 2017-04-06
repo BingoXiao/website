@@ -30,9 +30,6 @@
 
 
 <script>
-  import $ from 'jquery';
-  import {modalShow} from '../../../assets/js/modal';
-
   export default{
     data() {
       return {
@@ -238,21 +235,16 @@
     methods: {
       /* 鼠标移入图片 */
       showInfo: function(event) {
-        $(event.target).closest('td').find('.preview').css('display', '');
+        console.log();
       },
       /* 移出图片 */
       hideInfo: function(event) {
-        $(event.target).css('display', 'none');
+        console.log();
       },
       /* 点击查看 */
       preview: function(temps) {
         var self = this;
-        self.$store.commit('TEMP_ARR', temps);
-        $('#temp-carousel').carousel('cycle');
-        modalShow('#tempModal', 'zoomIn', function() {
-          $('article').addClass('blur_bg');
-          $('header').css('display', 'none');
-        });
+        console.log();
       }
     }
   };

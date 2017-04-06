@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid">
+  <el-row id="my">
     <header-component></header-component>
 
     <!--正文-->
-    <article class="row text-center content">
+    <article class="content">
       <section id="home" class="home">
         <top-carousel></top-carousel>
       </section>
@@ -28,7 +28,7 @@
 
       <!--合作-->
       <section id="partners" class="partners">
-        <img src="./assets/img/13.jpg" alt="partners"/>
+        <img src="./assets/img/13.jpg" alt="partners" style="width: 100%"/>
       </section>
 
       <!--联系我们-->
@@ -36,17 +36,10 @@
         <contact-component></contact-component>
       </footer>
     </article>
-
-    <!--图片展示轮播-->
-    <div class="modal temp_modal" id="tempModal"
-         data-show="false" aria-labelledby="myModalLabel">
-      <temp-show></temp-show>
-    </div>
-  </div>
+  </el-row>
 </template>
 
 <script>
-  import $ from 'jquery';
   import topCarousel from './components/carousel/top_carousel/index.vue';
   import headerComponent from './components/header_nav/index.vue';
   import aboutComponent from './components/about/index.vue';
@@ -58,12 +51,21 @@
   export default {
     name: 'app',
     mounted() {
-      /* 模态框图片 */
-      $('#tempModal').modal({
-        backdrop: 'static',
-        keyboard: false
-      });
-      $('#temp-carousel').carousel();
+      var self = this;
+      window.onscroll = function() {
+        let docTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        for (let i = 0; i < document.getElementsByTagName('section').length; i++) {
+          let dom = document.getElementsByTagName('section')[i];
+          let top = dom.offsetTop - 120;
+          let bot = top + dom.clientHeight;
+          let item = document.getElementById('menu').getElementsByTagName('li');
+          if (docTop < bot && docTop >= top) {
+            item[i].className = 'el-menu-item is-active';
+          } else {
+            item[i].className = 'el-menu-item';
+          }
+        }
+      };
     },
     components: {
       topCarousel,
@@ -78,35 +80,48 @@
 </script>
 
 <style>
-  .content {
-    color: #000;
-    background-color: #fff;
+  .blur{
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
   }
-  .home {
-    padding-top: 130px;
+  .el-menu-item.is-active{
+    color: #fff;
+    background-color: #ff1b1b;
+  }
+  .el-menu-item.is-active a{
+    color: #fff;
+  }
+  .content {
+    font-family: "Microsoft YaHei";
+  }
+
+  .home{
+    padding-top: 100px;
   }
   .arrow {
     background-color: #cccccc;
-    padding: 5px 0;
+    padding: 6px 0;
+    text-align: center;
   }
+
   .arrow img {
     width: 30px;
   }
+
   .about {
     padding: 200px 0 60px 0;
   }
+
   .service {
-    padding: 80px 0 80px 0;
+    padding: 80px 0 180px 0;
   }
-  .production{
+
+  .production {
     margin-bottom: 80px;
   }
-  .partners img{
-    width: 100%;
-  }
-  .temp_modal{
-    /*background-color: rgba(0, 0, 0, 0.03);*/
-  }
+
   /*模糊效果*/
   .blur_bg {
     -webkit-filter: blur(8px); /* Chrome, Opera */
