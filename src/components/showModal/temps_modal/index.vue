@@ -1,8 +1,15 @@
 <template>
   <el-row type="flex" justify="center" class="temps_content">
     <el-col :span="2" class="arrow_col">
-      <img src="../../../assets/img/12.png" alt="pic"
-           class="arrow" @click="preSlide">
+      <img v-if="!redLeft"
+           src="../../../assets/img/12.png"
+           class="arrow"
+           @mouseenter="redLeft=true">
+      <img v-else
+           src="../../../assets/img/15.png"
+           class="arrow"
+           @click="preSlide"
+           @mouseout="redLeft=false">
     </el-col>
 
     <el-col :span="18" class="arrow_col red_bg">
@@ -17,22 +24,35 @@
                    arrow="never">
         <el-carousel-item v-for="(item, index) in $store.state.tempsArr">
           <div class="intro">{{$store.state.tempsIntro[index]}}</div>
-          <img :src="item" alt="pic" style="width: 100%">
+          <img :src="item" alt="pic" class="img_size">
         </el-carousel-item>
       </el-carousel>
     </el-col>
 
     <el-col :span="2" class="arrow_col">
-      <img src="../../../assets/img/11.png"
+      <img v-if="!redRight"
+           src="../../../assets/img/11.png"
            alt="pic"
            class="arrow"
-           @click="nextSlide">
+           @mouseenter="redRight=true">
+      <img v-else
+           src="../../../assets/img/14.png"
+           alt="pic"
+           class="arrow"
+           @click="nextSlide"
+           @mouseout="redRight=false">
     </el-col>
   </el-row>
 </template>
 
 <script>
   export default{
+    data() {
+      return {
+        redLeft: false,
+        redRight: false
+      };
+    },
     methods: {
       tempsModalVisible: function() {
         var self = this;
@@ -90,5 +110,9 @@
     font-size: 18px;
     color: #fff;
     padding: 0 0 8px 0;
+  }
+  .img_size{
+    width:772px;
+    height: 381px;
   }
 </style>

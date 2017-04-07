@@ -1,7 +1,7 @@
 <template>
   <div class="image_wrapper">
     <div class="image"
-         @mouseenter="previewVisible=true">
+         @mouseenter="showTips">
       <img :src="imgSrc">
     </div>
     <div class="preview"
@@ -10,7 +10,10 @@
          @click="preview(temps, intro)">
       <div class="cover">
         <div class="cover_content">
-          <p>{{title}}</p>
+          <p v-if="separateFlag">
+            {{year}}<br/>{{event}}
+          </p>
+          <p v-else>{{title}}</p>
           <img src="../../../assets/img/5.png" alt="arrow">
         </div>
       </div>
@@ -28,10 +31,32 @@
     },
     data() {
       return {
+        separateFlag: false,
         previewVisible: false
       };
     },
+    computed: {
+      year: function() {
+        var self = this;
+        var str = self.title;
+        return str.substr(0, 5);
+      },
+      event: function() {
+        var self = this;
+        var str = self.title;
+        return str.substr(5);
+      }
+    },
     methods: {
+      showTips: function() {
+        var self = this;
+        self.previewVisible = true;
+        if (!/^\d{4}/.test(self.title)) {
+          self.separateFlag = false;
+        } else {
+          self.separateFlag = true;
+        }
+      },
       /* 点击查看 */
       preview: function(temps, intro) {
         var self = this;
@@ -61,8 +86,7 @@
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: #ff1d1d;
-    opacity: 0.5;
+    background-color: rgba(255, 29, 29, 0.51);
     filter: Alpha(opacity=50);
     display: table;
   }
@@ -71,6 +95,7 @@
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    font-family: SimHei;
   }
   .cover_content > p {
     margin-top: 40px;

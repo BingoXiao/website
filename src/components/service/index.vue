@@ -57,12 +57,13 @@
   .service_h2 {
     margin-top: 20px;
     margin-bottom: 0;
+    font-family: SimHei;
   }
 
   .service_content {
     display: inline-block;
-    font-family: "SimHei";
-    font-size: 13px;
+    font-family: SimHei;
+    font-size: 15px;
     background-color: #fff;
     border: none;
     margin: 0;

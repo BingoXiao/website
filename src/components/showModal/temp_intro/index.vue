@@ -1,8 +1,15 @@
 <template>
   <el-row type="flex" justify="center" class="temps_content">
     <el-col :span="2" class="arrow_col">
-      <img src="../../../assets/img/12.png" alt="pic"
-           class="arrow" @click="preSlide">
+      <img v-if="!redLeft"
+           src="../../../assets/img/12.png"
+           class="arrow"
+           @mouseenter="redLeft=true">
+      <img v-else
+           src="../../../assets/img/15.png"
+           class="arrow"
+           @click="preSlide"
+           @mouseout="redLeft=true">
     </el-col>
 
     <el-col :span="18" class="arrow_col red_bg">
@@ -23,9 +30,11 @@
           </el-carousel>
         </el-col>
 
-        <el-col :span="10" class="temps_content">
+        <el-col :span="10" class="temps_content rightContent">
           <div class="intro_img">
-            <img src="../../../assets/img/b.png">
+            <div class="img_logo">
+              <img src="../../../assets/img/b.png">
+            </div>
             <div class="intro">
               <div class="intro_content">
                 <h2>{{$store.state.tempsIntro.title}}</h2>
@@ -38,16 +47,29 @@
     </el-col>
 
     <el-col :span="2" class="arrow_col">
-      <img src="../../../assets/img/11.png"
+      <img v-if="!redRight"
+           src="../../../assets/img/11.png"
            alt="pic"
            class="arrow"
-           @click="nextSlide">
+           @mouseenter="redRight=true">
+      <img v-else
+           src="../../../assets/img/14.png"
+           alt="pic"
+           class="arrow"
+           @click="nextSlide"
+           @mouseout="redRight=false">
     </el-col>
   </el-row>
 </template>
 
 <script>
   export default{
+    data() {
+      return {
+        redLeft: false,
+        redRight: false
+      };
+    },
     methods: {
       tempsModalVisible: function() {
         var self = this;
@@ -101,26 +123,36 @@
     height: 410px;
     padding-top: 10px;
   }
+  .rightContent{
+    height: 410px;
+    margin-top: 10px;
+    position: relative;
+  }
+  .intro_img{
+    width: 100%;
+  }
+  .img_logo{
+    position: absolute;
+    top: 8%;
+    left: 25%;
+  }
+  .img_logo img{
+    width: 180px;
+  }
   .intro{
     text-align: left;
     color: #fff;
     padding: 0 0 8px 0;
   }
-  .intro_img{
-    width: 100%
-  }
-  .intro_img img{
-    display: inline-block;
-    width: 180px;
-    margin:0 auto;
-  }
   .intro_content{
     padding: 20px 0 0 30px;
-    margin-bottom: 50px;
+    position: absolute;
+    bottom: 0;
   }
   .intro_content>p{
     font-size: 13px;
-    line-height: 1.9;
+    line-height: 1.6;
+    margin-bottom: 0;
   }
   .arrow, .image>img{
     cursor: pointer;

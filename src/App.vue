@@ -108,10 +108,13 @@
     background-color: #ff1b1b;
   }
   .home_carousel .el-carousel__container{
-    height: 772px;
+    width: 100%;
+    height: 580px;
+    max-height: 580px;
   }
   .home_carousel .el-carousel__container img{
-    height: 772px;
+    height: 580px;
+    max-height: 580px;
   }
   .pro_carousel .el-carousel__indicators--outside{
     margin-top: 20px;
@@ -123,7 +126,7 @@
     color: #fff;
   }
   .content {
-    font-family: "Microsoft YaHei";
+    font-family: SimHei;;
   }
   .home{
     padding-top: 85px;

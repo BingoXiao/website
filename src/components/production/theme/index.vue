@@ -70,8 +70,8 @@
                 title: '2017年春节美陈',
                 src: require('../../../assets/img/theme/3.jpg'),
                 intro: {
-                  title: '2017年春节美陈',
-                  content: ''
+                  title: '',
+                  content: '2017年春节美陈'
                 },
                 temps: [
                   require('../../../assets/img/theme/3/1.jpg'),
@@ -102,8 +102,8 @@
                 title: '2016年南山春节美陈',
                 src: require('../../../assets/img/theme/5.jpg'),
                 intro: {
-                  title: '2016年南山春节美陈',
-                  content: ''
+                  title: '',
+                  content: '2016年南山春节美陈'
                 },
                 temps: [
                   require('../../../assets/img/theme/5/1.jpg'),
@@ -134,8 +134,8 @@
                 title: '2015年南山圣诞装置',
                 src: require('../../../assets/img/theme/7.jpg'),
                 intro: {
-                  title: '2015年南山圣诞装置',
-                  content: ''
+                  title: '',
+                  content: '2015年南山圣诞装置'
                 },
                 temps: [
                   require('../../../assets/img/theme/7/1.jpg'),
@@ -188,8 +188,8 @@
                 title: '2014年南山圣诞装置',
                 src: require('../../../assets/img/theme/10.jpg'),
                 intro: {
-                  title: '2014年南山圣诞装置',
-                  content: ''
+                  title: '',
+                  content: '2014年南山圣诞装置'
                 },
                 temps: [
                   require('../../../assets/img/theme/10/1.jpg'),
@@ -201,8 +201,8 @@
                 title: '2013年KK MALL球幕',
                 src: require('../../../assets/img/theme/11.jpg'),
                 intro: {
-                  title: '2013年KK MALL球幕',
-                  content: ''
+                  title: '',
+                  content: '2013年KK MALL球幕'
                 },
                 temps: [
                   require('../../../assets/img/theme/11/1.jpg'),

@@ -35,7 +35,7 @@
                 title: '2016年Mr.J Diner餐厅开业仪式',
                 src: require('../../../assets/img/festivals/1.jpg'),
                 intro: {
-                  title: '016MRJ梦想启动仪式',
+                  title: '2016MRJ梦想启动仪式',
                   content: 'Mr.J餐厅梦想启动典礼&媒体发布会，在熟悉的《双节棍》潮流街舞表演中拉开帷幕。' +
                   '天王巨星周杰伦、写词达人方文山、怪才黄俊郎、舞蹈大师麦蒸玮、御用化妆师杜国璋等一众文学界' +
                   '及音乐圈的好友空降kkone活动现场，全国各地的歌迷不远万里来到KK ONE，见证Mr.J餐厅梦想启动，' +
@@ -127,7 +127,7 @@
                 ]
               },
               {
-                title: '2016KK MALL时尚风暴',
+                title: '2016年KK MALL时尚风暴',
                 src: require('../../../assets/img/festivals/6.jpg'),
                 intro: {
                   title: '2015京基KK MALL时尚风暴',
@@ -170,8 +170,8 @@
                 title: '2015年沙井歌唱比赛',
                 src: require('../../../assets/img/festivals/8.jpg'),
                 intro: {
-                  title: '2015年沙井歌唱比赛',
-                  content: ''
+                  title: '',
+                  content: '2015年沙井歌唱比赛'
                 },
                 temps: [
                   require('../../../assets/img/festivals/8/1.jpg'),
@@ -183,8 +183,8 @@
                 title: '2015年南山秋季走秀',
                 src: require('../../../assets/img/festivals/9.jpg'),
                 intro: {
-                  title: '2015年南山秋季走秀',
-                  content: ''
+                  title: '',
+                  content: '2015年南山秋季走秀'
                 },
                 temps: [
                   require('../../../assets/img/festivals/9/1.jpg'),
@@ -281,8 +281,8 @@
                 title: '2014年沙井活动',
                 src: require('../../../assets/img/festivals/15.jpg'),
                 intro: {
-                  title: '2014年沙井活动',
-                  content: ''
+                  title: '',
+                  content: '2014年沙井活动'
                 },
                 temps: [
                   require('../../../assets/img/festivals/15/1.jpg'),
