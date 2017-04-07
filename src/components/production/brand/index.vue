@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="brand_table">
+    <table class="table">
       <tbody>
         <tr v-for="obj in items">
           <td v-for="item in obj.arr">
@@ -24,7 +24,8 @@
 
 
 <script>
-  import tempComponent from '../../tempShow/index';
+  import tempComponent from '../../carousel/tempShow/index';
+
   export default{
     data() {
       return {
@@ -103,17 +104,6 @@
   };
 </script>
 
-<style>
-  .brand_table {
-    border-collapse: separate;
-    border-spacing: 15px;
-  }
-  .brand_table > tbody > tr > td {
-    position: relative;
-  }
-  .brand_table .image>img, .brand_table .imageSample>img{
-    width: 320px;
-    height: 240px;
-  }
+<style scoped>
 
 </style>

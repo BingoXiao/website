@@ -1,7 +1,9 @@
 <template>
-  <el-row>
+  <el-row type="flex" justify="center">
     <el-col :span="24">
-      <el-carousel class="carousel-item">
+      <el-carousel class="carousel-item home_carousel"
+                   :interval="4000"
+                   arrow="never">
         <el-carousel-item v-for="item in images">
           <div class="img-wrapper">
             <img :src="item" alt="pic">

@@ -1,15 +1,15 @@
 <template>
-  <el-row type="flex" justify="center"
-          class="el-menu-demo">
+  <el-row type="flex" justify="center" id="header"
+          class="el-menu-demo" style="min-width: 1300px;">
     <el-col :span="24" class="hei">
       <el-row type="flex" justify="center" class="hei">
-        <el-col :span="2" class="hei" style="display: table;">
-          <div style="display:table-cell;vertical-align: middle">
+        <el-col :span="6" class="hei logo">
+          <div style="margin: auto">
             <img src="../../assets/img/logo.png" style="vertical-align: middle">
           </div>
         </el-col>
 
-        <el-col :span="16" :offset="2" style="height: 100%">
+        <el-col :span="16" style="height: 100%">
           <el-menu id="menu"
                    class="hei"
                    :default-active="activeIndex"
@@ -60,7 +60,7 @@
     width: 100%;
     position: fixed;
     z-index: 999;
-    height: 100px;
+    height: 85px;
     background-color: #fff;
     border-bottom: 2px solid #cccccc;
   }
@@ -70,10 +70,19 @@
   .hei{
     height: 100%;
   }
+  .logo{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items:center;
+    align-items:center;
+  }
   .el-menu--horizontal .el-menu-item a,
   .el-menu--horizontal .el-menu-item a:hover{
     font-size: 18px;
-    padding: 65px 20px 15px 20px;
+    padding: 50px 10px 10px 10px;
   }
   .el-menu--horizontal .el-menu-item a:hover{
     color: #fff;

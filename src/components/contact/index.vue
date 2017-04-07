@@ -1,10 +1,10 @@
 <template>
     <el-col :span="24" class="wrapper">
       <el-row>
-        <el-col :span="5" :offset="6">
+        <el-col :span="6" :offset="6">
           <img src="../../assets/img/er.png" class="erweima" alt="erweima">
         </el-col>
-        <el-col :span="6" style="text-align: left;letter-spacing: 1.5px;">
+        <el-col :span="8" style="text-align: left;letter-spacing: 1.5px;">
           <el-row class="footer_title">
             <div style="font-size: 22px;">联系我们</div>
             <div style="font-size: 20px;">contact us</div>

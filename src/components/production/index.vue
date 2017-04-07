@@ -3,7 +3,9 @@
     <el-col :span="4" class="production_nav">
       <h3 class="production_title">出品</h3>
       <ul>
-        <li role="presentation" v-for="(item, index) in list" @click="select_list(index)">
+        <li role="presentation"
+            v-for="(item, index) in list"
+            @click="select_list(index)">
           <a href="javascript:;" :class="activeIndex===index?'active':''">
             <span class="circle"></span> {{item.title}}</a>
         </li>
@@ -56,6 +58,11 @@
       select_list: function(index) {
         var self = this;
         self.activeIndex = index;
+        if (index === 0 || index === 3) {
+          self.$store.commit('INDEX', 1);
+        } else {
+          self.$store.commit('INDEX', 2);
+        }
       }
     },
     components: {
