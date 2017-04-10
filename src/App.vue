@@ -64,6 +64,11 @@
   export default {
     name: 'app',
     mounted() {
+      var self = this;
+      self.carouselSize();
+      window.onresize = function() {
+        self.carouselSize();
+      };
       window.onscroll = function() {
         let docTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
         let sections = document.getElementsByTagName('section');
@@ -89,6 +94,14 @@
         }
       };
     },
+    methods: {
+      carouselSize: function() {
+        let dom = document.getElementsByClassName('home_carousel')[0].firstChild;
+        let width = dom.offsetWidth;
+        let height = width * 779 / 1920;
+        dom.style.padding = (height - 450) / 2 + 'px 0';
+      }
+    },
     components: {
       topCarousel,
       headerComponent,
@@ -109,12 +122,12 @@
   }
   .home_carousel .el-carousel__container{
     width: 100%;
-    height: 580px;
-    max-height: 580px;
+    /*height: 580px;*/
+    /*max-height: 580px;*/
   }
   .home_carousel .el-carousel__container img{
-    height: 580px;
-    max-height: 580px;
+    /*height: 580px;*/
+    /*max-height: 580px;*/
   }
   .pro_carousel .el-carousel__indicators--outside{
     margin-top: 20px;
